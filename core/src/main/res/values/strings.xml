@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Effective Mobile</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email"> Код авторизации отправлен на %1$s</string>
+    <string name="more_vacancy">Ещё %1$s</string>
+    <string name="observing_people">Сейчас просматривает %1$s %2$s</string>
+    <string name="published_date_format">Опубликовано %1$d %2$s</string>
+    <string name="vacancy_singular">вакансия</string>
+    <string name="vacancy_plural_two_to_four">вакансии</string>
+    <string name="vacancy_plural_other">вакансий</string>
+    <string name="person_singular">человек</string>
+    <string name="person_plural_two_to_four">человека</string>
+    <string name="person_plural_other">человек</string>
+    <string-array name="months">
+        <item>января</item>
+        <item>февраля</item>
+        <item>марта</item>
+        <item>апреля</item>
+        <item>мая</item>
+        <item>июня</item>
+        <item>июля</item>
+        <item>августа</item>
+        <item>сентября</item>
+        <item>октября</item>
+        <item>ноября</item>
+        <item>декабря</item>
+    </string-array>
+</resources>

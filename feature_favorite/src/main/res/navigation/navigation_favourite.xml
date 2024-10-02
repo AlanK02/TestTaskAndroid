@@ -1,0 +1,14 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_favourite">
+
+    <!-- Favourite Fragment -->
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.alan.feature_favorite.presentation.screen.FavouriteFragment"
+        android:label="FavouriteFragment"
+        tools:layout="@layout/fragment_favourite">
+        <deepLink app:uri="app://com.alan.fav/favourite" />
+    </fragment>
+</navigation>

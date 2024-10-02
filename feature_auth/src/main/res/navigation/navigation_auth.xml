@@ -1,0 +1,41 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_auth"
+    app:startDestination="@id/authNavigationFragment">
+
+    <fragment
+        android:id="@+id/authNavigationFragment"
+        android:name="com.alan.feature_auth.screen.AuthNavigationFragment"
+        android:label="AuthNavigationFragment"
+        tools:layout="@layout/fragment_auth_navigation">
+        <deepLink app:uri="app://com.alan.test/checkAuth" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.alan.feature_auth.screen.LoginFragment"
+        android:label="AuthFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_authFragment_to_checkCodeFragment"
+            app:destination="@id/checkCorrectCodeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <deepLink app:uri="app://com.alan.test/auth" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/checkCorrectCodeFragment"
+        android:name="com.alan.feature_auth.screen.CheckCorrectCodeFragment"
+        android:label="CheckCorrectCode"
+        tools:layout="@layout/fragment_check_code">
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <deepLink app:uri="app://com.alan.test/checkCode?email={email}" />
+    </fragment>
+
+</navigation>
