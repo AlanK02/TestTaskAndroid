@@ -4,8 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.alan.core.models.Button
 
-@Entity("offer")
-data class OfferEntity(
+@Entity("offers")
+data class AdviceEntity(
     val button: Button?,
     val id: String?,
     val link: String,

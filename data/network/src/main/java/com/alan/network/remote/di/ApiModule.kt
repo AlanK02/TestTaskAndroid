@@ -1,6 +1,6 @@
 package com.alan.network.remote.di
 
-import com.alan.network.remote.MainApi
+import com.alan.network.remote.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,15 +11,15 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class SearchModule {
+class ApiModule {
 
     private val BASE_URL = "https://drive.usercontent.google.com/"
 
     @Provides
     @Singleton
-    fun provideApi(): MainApi {
+    fun provideApi(): ApiService {
         return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()).build()
-            .create(MainApi::class.java)
+            .create(ApiService::class.java)
     }
 }

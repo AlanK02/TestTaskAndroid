@@ -1,7 +1,7 @@
 package com.alan.database.local.di
 
 import com.alan.database.local.MainDB
-import com.alan.database.local.OfferDao
+import com.alan.database.local.AdviceDao
 import com.alan.database.local.VacancyDao
 import dagger.Module
 import dagger.Provides
@@ -20,6 +20,6 @@ internal object DaoModule {
     @Provides
     fun provideOfferDao(
         database: MainDB
-    ): OfferDao = database.getOfferDao()
+    ): AdviceDao = database.getAdviceDao()
 
 }

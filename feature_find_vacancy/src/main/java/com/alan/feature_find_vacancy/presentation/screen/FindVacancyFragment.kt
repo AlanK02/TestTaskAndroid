@@ -23,7 +23,7 @@ class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentFindVacancyBinding
     private val viewModel: FindVacancyViewModel by viewModels()
-    private val offerAdapter = AdviceAdapter()
+    private val adviceAdapter = AdviceAdapter()
 
     private lateinit var vacanciesAdapter: VacanciesAdapter
 
@@ -46,7 +46,7 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rvOffers.adapter = offerAdapter
+        binding.rvOffers.adapter = adviceAdapter
         binding.rvVacancies.adapter = vacanciesAdapter
 
         observeViewModel()
@@ -79,7 +79,7 @@ class SearchFragment : Fragment() {
             }
 
             getAdvice().observe(viewLifecycleOwner) { res ->
-                offerAdapter.submitList(res)
+                adviceAdapter.submitList(res)
             }
 
             isLoading.observe(viewLifecycleOwner) { res ->

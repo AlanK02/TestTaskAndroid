@@ -10,6 +10,8 @@ import com.alan.core.utils.Resource
 import com.alan.feature_find_vacancy.domain.GetAdviceUseCase
 import com.alan.feature_find_vacancy.domain.GetDataRemotelyUseCase
 import com.alan.feature_find_vacancy.domain.GetVacanciesUseCase
+import com.alan.feature_find_vacancy.domain.SaveAdviceUseCase
+import com.alan.feature_find_vacancy.domain.SaveVacancyUseCase
 import com.alan.feature_find_vacancy.domain.UpdateFavouriteFromFindUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +23,9 @@ class FindVacancyViewModel @Inject constructor(
     private val getVacanciesUseCase: GetVacanciesUseCase,
     private val getAdviceUseCase: GetAdviceUseCase,
     private val getDataRemotelyUseCase: GetDataRemotelyUseCase,
-    private val updateFavouriteUseCase: UpdateFavouriteFromFindUseCase
+    private val updateFavouriteUseCase: UpdateFavouriteFromFindUseCase,
+    private val saveAdviceUseCase: SaveAdviceUseCase,
+    private val saveVacancyUseCase: SaveVacancyUseCase
 ) : ViewModel() {
 
     var isLoading = MutableLiveData(false)
@@ -41,22 +45,12 @@ class FindVacancyViewModel @Inject constructor(
             getDataRemotelyUseCase.execute().collect { res ->
                 when (res) {
                     is Resource.Success -> {
-                        val data = res.data
-                        val offers = data?.offers
-                        val vacancies = data?.vacancies
-
-                        if (!offers.isNullOrEmpty()) {
-                            viewModelScope.launch(Dispatchers.IO) {
-                                getAdviceUseCase.execute()
-                            }
+                        res.data?.offers?.takeIf { it.isNotEmpty() }?.let {
+                            saveAdviceUseCase.execute(it)
                         }
-
-                        if (vacancies != null) {
-                            viewModelScope.launch(Dispatchers.IO) {
-                                getVacanciesUseCase.execute()
-                            }
+                        res.data?.vacancies?.let {
+                            saveVacancyUseCase.execute(it)
                         }
-
                         isLoading.value = false
                     }
 
@@ -71,6 +65,7 @@ class FindVacancyViewModel @Inject constructor(
             }
         }
     }
+
 
     fun changeStatus(prevStatus: Boolean, id: String) {
         viewModelScope.launch(Dispatchers.IO) {

@@ -8,5 +8,5 @@ import javax.inject.Singleton
 class GetAdviceUseCase @Inject constructor(
     private val repository: MainRepository
 ) {
-    fun execute() = repository.getOffersLocally()
+    fun execute() = repository.getAdviceLocally()
 }

@@ -29,10 +29,8 @@ class AuthNavigationFragment : Fragment() {
         val hasEntered = authNavigationHandler?.isUserLoggedIn() ?: false
 
         if (hasEntered) {
-            // Navigate using deep link to search fragment
             findNavController().navigate(Uri.parse("app://com.alan.find/search"))
         } else {
-            // Navigate to auth fragment using deep link
             findNavController().navigate(Uri.parse("app://com.alan.test/auth"))
         }
     }

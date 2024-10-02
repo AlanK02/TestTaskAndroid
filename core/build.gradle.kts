@@ -42,7 +42,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    //Retrofit and JWT
     implementation(libs.retrofit2)
     implementation(libs.logging.interceptor)
 }
